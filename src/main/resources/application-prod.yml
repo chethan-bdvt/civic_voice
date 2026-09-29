@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/civicvoice}
+    driver-class-name: ${DB_DRIVER_CLASS_NAME:org.postgresql.Driver}
+    username: ${DB_USERNAME:civicvoice}
+    password: ${DB_PASSWORD:civicvoice123}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: ${DDL_AUTO:update}
+    properties:
+      hibernate:
+        dialect: ${HIBERNATE_DIALECT:org.hibernate.dialect.PostgreSQLDialect}
+        format_sql: true
+    show-sql: false
+  h2:
+    console:
+      enabled: false
+
+server:
+  port: ${SERVER_PORT:8080}
+
+app:
+  evidence:
+    storage-path: ${EVIDENCE_STORAGE_PATH:/var/lib/civicvoice/evidence}

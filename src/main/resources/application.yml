@@ -1,0 +1,57 @@
+spring:
+  config:
+    import: optional:file:.env[.properties]
+  application:
+    name: civic-voice
+  datasource:
+    url: ${DB_URL:jdbc:h2:mem:civicvoice;MODE=PostgreSQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE}
+    driver-class-name: ${DB_DRIVER_CLASS_NAME:org.h2.Driver}
+    username: ${DB_USERNAME:sa}
+    password: ${DB_PASSWORD:password}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: ${DDL_AUTO:update}
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: ${HIBERNATE_DIALECT:org.hibernate.dialect.H2Dialect}
+    show-sql: false
+  h2:
+    console:
+      enabled: ${H2_CONSOLE_ENABLED:true}
+      path: /h2-console
+      settings:
+        trace: false
+        web-allow-others: false
+
+server:
+  port: ${SERVER_PORT:8080}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      probes:
+        enabled: true
+
+logging:
+  level:
+    org.springframework.security: INFO
+    com.civicvoice: INFO
+
+jwt:
+  secret: ${JWT_SECRET:ThisIsAProductionStrongJWTSecretKeyForCivicVoice1234567890}
+  expiration-ms: ${JWT_EXPIRATION_MS:86400000}
+
+app:
+  evidence:
+    storage-path: ${EVIDENCE_STORAGE_PATH:storage/evidence}
+  admin:
+    username: ${ADMIN_USERNAME:admin}
+    password: ${ADMIN_PASSWORD:admin123}
+  security:
+    enabled: false

@@ -1,0 +1,19 @@
+name: civic_voice_android
+publish_to: 'none'
+description: Civic Voice Android UI with ad slots and video ad overlays.
+version: 1.0.0
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  google_mobile_ads: ^5.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
